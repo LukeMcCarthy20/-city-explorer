@@ -29,3 +29,17 @@ Start time: 3:10
 Finish time: 3:30
 
 Actual time needed to complete: 20 min
+
+---
+
+Name of feature: Second half of step up.
+
+Estimate of time needed to complete: 20 min
+
+Start time: 3:30
+
+Finish time: 3:50
+
+Actual time needed to complete: 20 min
+
+---
