@@ -20,12 +20,12 @@
 ## Credit and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
 
-Name of feature: ________________________________
+Name of feature: First half of step up.
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: 20 min
 
-Start time: _____
+Start time: 3:10
 
-Finish time: _____
+Finish time: 3:30
 
-Actual time needed to complete: _____
+Actual time needed to complete: 20 min
