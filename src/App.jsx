@@ -25,42 +25,52 @@ class App extends React.Component {
     event.preventDefault();
     console.log("city name?", this.state.cityName);
     console.log(API_KEY);
+    try {
+      let URL = `https://us1.locationiq.com/v1/search?key=${API_KEY}&q=${this.state.cityName}&format=json`;
 
-    let URL = `https://us1.locationiq.com/v1/search?key=${API_KEY}&q=${this.state.cityName}&format=json`;
+      let cityInfo = await axios.get(URL);
 
-    let cityInfo = await axios.get(URL);
+      console.log("city info: ", cityInfo.data[0]);
 
-    console.log("city info: ", cityInfo.data[0]);
+      this.setState({
+        cityInfo: cityInfo.data[0],
+        error: false,
+      });
 
-    this.setState({
-      cityInfo: cityInfo.data[0],
-      error: false,
-    });
-  };
+    } catch (error) {
+      prompt('error trying to grab data')
+      this.setState({
+        error: true
+      });
+    }
 
-  render() {
+    };
 
-    return (
-      <>
-        <h1>World Explore</h1>
-        <form onSubmit={this.handleCityFormSubmit}>
-          <label>
-            Pick a City:
-            <input type="text" onChange={this.handleCityInput} />
-          </label>
-          <button type="submit"> Get City Data</button>
-        </form>
-        {this.state.cityInfo && (
-          <>
-            <p>{this.state.cityInfo.display_name}</p>
-            <p>{this.state.cityInfo.lat}</p>
-            <p>{this.state.cityInfo.lon}</p>
-          </>
-        )}
 
-      </>
-    );
+
+    render() {
+
+      return (
+        <>
+          <h1>World Explore</h1>
+          <form onSubmit={this.handleCityFormSubmit}>
+            <label>
+              Pick a City:
+              <input type="text" onChange={this.handleCityInput} />
+            </label>
+            <button type="submit"> Get City Data</button>
+          </form>
+          {this.state.cityInfo && (
+            <>
+              <p>{this.state.cityInfo.display_name}</p>
+              <p>{this.state.cityInfo.lat}</p>
+              <p>{this.state.cityInfo.lon}</p>
+            </>
+          )}
+
+        </>
+      );
+    }
   }
-}
 
 export default App;
