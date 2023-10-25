@@ -12,6 +12,8 @@ class App extends React.Component {
       error: false,
       cityName: "",
       cityInfo: null,
+      displayImage: false,
+
     };
   }
 
@@ -34,6 +36,7 @@ class App extends React.Component {
 
       this.setState({
         cityInfo: cityInfo.data[0],
+        displayImage: true,
         error: false,
       });
 
@@ -65,8 +68,14 @@ class App extends React.Component {
               <p>{this.state.cityInfo.display_name}</p>
               <p>{this.state.cityInfo.lat}</p>
               <p>{this.state.cityInfo.lon}</p>
+              {/* <p>{this.state.cityInfo.data[0].weather.description}</p> */}
             </>
           )}
+          {this.state.displayImage &&
+          
+          
+          <img src={`https://maps.locationiq.com/v3/staticmap?key=pk.366fea80da4817b70fc2d981b40b1718&center=47.60621,-122.33207&size=${window.innerWidth}x300&format=jpg&zoom=16`}/>
+          }
 
         </>
       );
