@@ -1,8 +1,10 @@
 import React from "react";
 import "./App.css";
 import axios from "axios";
+import Weather from './Weather';
 
 const API_KEY = import.meta.env.VITE_API_KEY;
+let VITE_APP_SERVER = import.meta.env.VITE_APP_SERVER;
 console.log(API_KEY);
 
 class App extends React.Component {
