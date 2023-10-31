@@ -18,6 +18,7 @@ class App extends React.Component {
       showWeather: false,
       displayImage: false,
       error: false,
+      movies: '',
 
     };
   }
@@ -43,14 +44,14 @@ class App extends React.Component {
       lat: cityInfo.data[0].lat,
       lon: cityInfo.data[0].lon,
 
-      
+
 
       displayImage: true,
       error: false,
     });
 
-  console.log("Latitude:", cityInfo.data[0].lat);
-  console.log("Longitude:", cityInfo.data[0].lon);
+    console.log("Latitude:", cityInfo.data[0].lat);
+    console.log("Longitude:", cityInfo.data[0].lon);
     this.displayWeather(cityInfo.data[0].lat, cityInfo.data[0].lon, cityInfo.data[0].display_name);
   };
 
@@ -86,14 +87,24 @@ class App extends React.Component {
         </form>
         {
           this.state.showWeather &&
-          <Weather weather={this.state.weather} />
+          <div>
+            <p>Latitude: {this.state.lat}</p>
+            <p>Longitude: {this.state.lon}</p>
+
+            <Weather weather={this.state.weather} />
+
+          </div>
         }
 
 
         {this.state.displayImage &&
 
 
-          <img src={`https://maps.locationiq.com/v3/staticmap?key=pk.366fea80da4817b70fc2d981b40b1718&center=47.60621,-122.33207&size=${window.innerWidth}x300&format=jpg&zoom=16`} />
+          <img
+            src={`https://maps.locationiq.com/v3/staticmap?key=pk.366fea80da4817b70fc2d981b40b1718&center=${this.state.lat},${this.state.lon}&size=${window.innerWidth}x300&format=jpg&zoom=16`}
+            alt={`Map of ${this.state.locationName}`}
+          />
+
         }
 
       </>
